@@ -61,6 +61,7 @@ public class MainWindowController implements Initializable {
   private Thread worker;
   private Scene scene;
   private ShutdownController shutdowncontroller;
+  private int maxsize;
   
 
   /**
@@ -119,7 +120,7 @@ public class MainWindowController implements Initializable {
     for(File file : filenames){
       /* Single Image Thread */
       ImageTask imageTask = new ImageTask(
-              file.getName(), baseStr, origStr);
+              file.getName(), baseStr, origStr, maxsize);
       tasklist.add(imageTask);
     }
     
@@ -226,6 +227,10 @@ public class MainWindowController implements Initializable {
 
   public void setScene(Scene scene) {
     this.scene = scene;
+  }
+
+  public void setMaxSize(int maxsize) {
+    this.maxsize = maxsize;
   }
 
 

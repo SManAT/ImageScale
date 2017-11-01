@@ -21,11 +21,13 @@ public class ImageTask extends Task<Void>{
   private final String origStr;
   private final String baseStr;
   private SynchronizedImageProperties info;
+  private final int maxsize;
   
-  public ImageTask(String filename, String baseStr, String origStr) {
+  public ImageTask(String filename, String baseStr, String origStr, int maxsize) {
     this.filename = filename;
     this.baseStr = baseStr;
     this.origStr = origStr;
+    this.maxsize = maxsize;
   }
   
   @Override
@@ -49,7 +51,7 @@ public class ImageTask extends Task<Void>{
       // Load image
       BufferedImage srcImage = ImageIO.read(src.toFile());
       // Scale image
-      BufferedImage scaledImage = Scalr.resize(srcImage, 150);
+      BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
       ImageIO.write(scaledImage, "JPG", src.toFile());
       //Websicheren Namen machen
       String newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), origStr).toString(), workingFilename.getName());

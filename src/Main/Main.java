@@ -102,6 +102,7 @@ public class Main extends Application {
 
       XMLTool.LoadXMLFile(configFile, handle);
       
+      controller.setMaxSize(handle.maxsize);
       controller.setBaseStr(handle.imagePath);
       controller.setOrigStr(handle.backupPath);
       

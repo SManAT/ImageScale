@@ -14,8 +14,7 @@ public class configHandler implements ContentHandler {
 
   private String currentValue;
 
-  public int maxwidth;
-  public int maxheight;
+  public int maxsize;
   public String imagePath;
   public String backupPath;
 
@@ -44,11 +43,8 @@ public class configHandler implements ContentHandler {
   public void endElement(String uri, String localName, String qName)
           throws SAXException {
     // Name setzen
-    if (localName.equals("max-width")) {
-      maxwidth = Integer.parseInt(currentValue.trim());
-    }
-    if (localName.equals("max-height")) {
-      maxheight = Integer.parseInt(currentValue.trim());
+    if (localName.equals("max")) {
+      maxsize = Integer.parseInt(currentValue.trim());
     }
     if (localName.equals("image-dir")) {
      imagePath = currentValue.trim();
