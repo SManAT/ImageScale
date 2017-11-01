@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>  
-  <max-width>1024</max-width>
-  <max-height>1024</max-height>
+  <max>1024</max>
   <image-dir>_Bilder</image-dir>
   <backup-dir>_Originale</backup-dir>
 </config>

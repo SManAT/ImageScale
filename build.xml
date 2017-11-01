@@ -7,24 +7,29 @@
 
   <description>Builds, tests, and runs the project ImageScale.</description>
   <import file="nbproject/build-impl.xml"/>
-    <target name="-post-compile">
-      <property name="project.name" value="ImageScale"/>
-      <property name="dist.dir" value="dist/"/>
-      <delete file="${dist.dir}/README.TXT" verbose="${verbose}"/>
-      <delete file="${dist.dir}/ImageScale.html" verbose="${verbose}"/>
-      <delete file="${dist.dir}/ImageScale.jnlp" verbose="${verbose}"/>
-      <delete dir="${dist.dir}/web-files" verbose="${verbose}"/>
+  <target name="-post-compile">
+    <property name="project.name" value="ImageScale"/>
+    <property name="dist.dir" value="dist/"/>
       
-      <copy file="config.xml" tofile="${dist.dir}/config.xml" />
-      <copy file="Readme.txt" tofile="${dist.dir}/Readme.txt" />
-      <copy file="Readme.txt" tofile="${dist.dir}/README.md" />
-   </target>
- 
-   <target name="-post-jfx-jar">
-       <echo>Creating: Windows Exe Launch4j</echo>
-       <property name="launch4j.dir" value="C:/Users/Stefan/OneDrive - BRG Frauengasse/Dokumente/MyWorkStuff/launch4j"/>
-       <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" 
+    <copy file="config.xml" tofile="${dist.dir}/config.xml" />
+    <copy file="Readme.txt" tofile="${dist.dir}/Readme.txt" />
+    <copy file="Readme.txt" tofile="${dist.dir}/README.md" />
+  </target>
+   
+  <target name="-post-jfx-jar">
+    <echo>Creating: Windows Exe Launch4j</echo>
+    <property name="launch4j.dir" value="C:/Users/Stefan/OneDrive - BRG Frauengasse/Dokumente/MyWorkStuff/launch4j"/>
+    <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" 
                 classpath="${launch4j.dir}/launch4j.jar :${launch4j.dir}/lib/xstream.jar" />
-       <launch4j configFile="launch4j.xml" />
-   </target>
+    <launch4j configFile="launch4j.xml" />
+  </target>
+   
+  <target name="-post-jfx-deploy">
+    <delete file="${dist.dir}/README.TXT" verbose="${verbose}"/>
+    <delete file="${dist.dir}/ImageScale.html" verbose="${verbose}"/>
+    <delete file="${dist.dir}/ImageScale.jnlp" verbose="${verbose}"/>
+    <delete dir="${dist.dir}/web-files" verbose="${verbose}"/>
+  </target>
+   
+   
 </project>
