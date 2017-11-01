@@ -26,6 +26,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Main.SynchronizedImageProperties;
+import SH.File.FileTools;
 import javafx.beans.binding.DoubleBinding;
 
 /**
@@ -189,12 +190,8 @@ public class MainWindowController implements Initializable {
       Platform.runLater(() -> {
         String formattedString = String.format("Bilder bearbeitet: %d", filenames.length);
         shutdowncontroller.setTxt1(formattedString);
-        
-        formattedString = String.format("Originalgröße: %d Byte", imgProp.getSize());
-        shutdowncontroller.setTxt2(formattedString);
-        
-        formattedString = String.format("Umgewandelt: %d Byte", imgProp.getCalculatedsize());
-        shutdowncontroller.setTxt3(formattedString);
+        shutdowncontroller.setTxt2("Originalgröße: "+FileTools.getSizeFormated(imgProp.getSize()));        
+        shutdowncontroller.setTxt3("Umgewandelt: "+FileTools.getSizeFormated(imgProp.getCalculatedsize()));
         
         double fact = (double)imgProp.getCalculatedsize() / (double)imgProp.getSize();
         
