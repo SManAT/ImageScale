@@ -7,9 +7,9 @@ Done in JavaFX for learning JavaFX. You can also use other Tools like Gimp, Phot
 
 ## How to work with it
 1. All Configuration is made in config.xml
-2. All Images for converting are in <image-dir>
-3. A Backup of the original File is made in <backup-dir>
-4. <max> is the maximum dimension of the biggest side of the image
+2. All Images for converting are in \<image-dir\>
+3. A Backup of the original File is made in \<backup-dir\>
+4. \<max\> is the maximum dimension of the biggest side of the image
 
 
 ### The Format of config.xml
