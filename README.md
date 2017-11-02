@@ -13,11 +13,11 @@ Done in JavaFX for learning JavaFX. You can also use other Tools like Gimp, Phot
 
 
 ### The Format of config.xml
-<config>  
-  <max>1024</max>
-  <image-dir>_Bilder</image-dir>
-  <backup-dir>_Originale</backup-dir>
-</config>
+\<config\>  
+  \<max\>1024\</max\>
+  \<image-dir\>_Bilder\</image-dir\>
+  \<backup-dir\>_Originale\</backup-dir\>
+\</config\>
 
 ## Finally
 This software can be improved. Right now its working.
