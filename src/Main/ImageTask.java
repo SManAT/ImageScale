@@ -65,7 +65,7 @@ public class ImageTask extends Task<Void>{
       //neuer Name
       long newsize = FileTools.getSize(src);
       info.addCalculatedsize(newsize);
-      logger.info(origsize+"Byte -> "+newsize);
+      logger.info(origsize+" Byte -> "+newsize+" Byte");
 
       updateMessage(newname);      
       updateProgress(1, 1);
