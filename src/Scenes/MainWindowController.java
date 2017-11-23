@@ -35,6 +35,7 @@ import javafx.beans.binding.DoubleBinding;
  * @author Mag. Stefan Hagmann
  */
 public class MainWindowController implements Initializable {
+  
   @FXML
   private AnchorPane root;
   @FXML
