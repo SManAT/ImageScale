@@ -17,6 +17,7 @@
   </target>
    
   <target name="-post-jfx-jar">
+    <!-- Enable -> Properties - Packaging - Compress JARS -->
     <echo>Creating: Windows Exe Launch4j</echo>
     <property name="launch4j.dir" value="C:/Users/Stefan/OneDrive - BRG Frauengasse/Dokumente/MyWorkStuff/launch4j"/>
     <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" 
