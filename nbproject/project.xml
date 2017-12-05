@@ -31,7 +31,7 @@
                 <id>jar</id>
             </reference>
             <reference>
-                <foreign-project>MyJavaFX</foreign-project>
+                <foreign-project>MyJavaFXTools</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>
