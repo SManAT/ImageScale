@@ -195,8 +195,12 @@ public class MainWindowController implements Initializable {
         shutdowncontroller.setTxt2("Originalgröße: "+FileTools.getSizeFormated(imgProp.getSize()));        
         shutdowncontroller.setTxt3("Umgewandelt: "+FileTools.getSizeFormated(imgProp.getCalculatedsize()));
         
+          long calculatedsize = imgProp.getCalculatedsize();
+          long name = imgProp.getSize();
+        
         double fact = (double)imgProp.getCalculatedsize() / (double)imgProp.getSize();
         
+        fact = 0.07;
         shutdowncontroller.setProgress(1.0-fact);
       });
       shutdowncontroller.startTicker();
