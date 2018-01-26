@@ -1,7 +1,6 @@
 package Main;
 
 import SH.File.FileTools;
-import Scenes.MainWindowController;
 import imgscalr.Scalr;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -17,7 +16,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Mag. Stefan Hagmann
  */
-public class ImageTask extends Task<Void>{
+public class ImageTask extends Task<Integer> {
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ImageTask.class);
 
   private final String filename;
@@ -34,7 +33,7 @@ public class ImageTask extends Task<Void>{
   }
   
   @Override
-  protected Void call(){
+  protected Integer call(){
     try {  
       //Infos
       
@@ -71,8 +70,9 @@ public class ImageTask extends Task<Void>{
       updateProgress(1, 1);
     } catch (IOException ex) {
       ex.printStackTrace();
+      return -1;
     }
-    return null;
+    return 1;
   }
   
   public void setInfo(SynchronizedImageProperties info){

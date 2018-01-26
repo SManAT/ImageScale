@@ -27,7 +27,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Main.SynchronizedImageProperties;
 import SH.File.FileTools;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
 import javafx.beans.binding.DoubleBinding;
+import org.slf4j.LoggerFactory;
 
 /**
  * FXML Controller class
@@ -35,6 +41,8 @@ import javafx.beans.binding.DoubleBinding;
  * @author Mag. Stefan Hagmann
  */
 public class MainWindowController implements Initializable {
+    
+  private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MainWindowController.class);
   
   @FXML
   private AnchorPane root;
@@ -116,8 +124,11 @@ public class MainWindowController implements Initializable {
   }
 
   public void startConverting(){
+    int processors = Runtime.getRuntime().availableProcessors();
+    ExecutorService executor = Executors.newFixedThreadPool(processors);
+    
     //Alle Tasks erstellen
-    List<Task<Void>> tasklist = new ArrayList<>();
+    List<Task<Integer>> tasklist = new ArrayList<>();
     for(File file : filenames){
       /* Single Image Thread */
       ImageTask imageTask = new ImageTask(
@@ -130,8 +141,8 @@ public class MainWindowController implements Initializable {
     //Ausführen lassen
     allImagesTask = new Task() {
       @Override
-      protected Object call() throws Exception {
-        for (Task<Void> t : tasklist) {
+      protected Integer call() throws Exception {
+        for (Task<Integer> t : tasklist) {
 
           //jeder Task liefert einen Beitrag zum GesamtProgress
           DoubleBinding task_progress = t.progressProperty().divide(tasklist.size());
@@ -151,24 +162,38 @@ public class MainWindowController implements Initializable {
           ((ImageTask)t).setInfo(imgProp);
           //Thread als Field definieren
           timage = new Thread(t);
-          timage.start();
-          try {
-            Thread.sleep(50);
-          } catch (InterruptedException ex) {
-            break;
-          }
+          //timage.start();
+          Future<?> future = executor.submit(timage);
+          //blocking
+          future.get();
         }
-        return null;
+        
+        //finish all existing threads in the queue
+        executor.shutdown();
+        return 1;
       }
     };
-    allImagesTask.setOnSucceeded(e -> {
-      this.changeScene("/Scenes/Shutdown.fxml", e);
-      
-    });
+    
     worker = new Thread(allImagesTask);
     worker.setName("Runnable-Convert all Images");
-    worker.setDaemon(true);
-    worker.start();  
+    //worker.setDaemon(true);
+    ExecutorService es = Executors.newFixedThreadPool(1);
+    Future<?> worker_future = es.submit(worker);
+    es.shutdown();
+    
+    try {
+      //blocking
+      worker_future.get();
+      //Alles Fertig
+      logger.info("Alle Tasks fertig");
+      this.changeScene("/Scenes/Shutdown.fxml");
+    } catch (InterruptedException | ExecutionException ex) {
+      Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    //worker.start();
+    
+    
+      
   }
   
   /**
@@ -176,7 +201,7 @@ public class MainWindowController implements Initializable {
    * @param fxmlFile 
    * @param e 
    */
-  public void changeScene(String fxmlFile, Event e){
+  public void changeScene(String fxmlFile){
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource(fxmlFile));
@@ -195,12 +220,9 @@ public class MainWindowController implements Initializable {
         shutdowncontroller.setTxt2("Originalgröße: "+FileTools.getSizeFormated(imgProp.getSize()));        
         shutdowncontroller.setTxt3("Umgewandelt: "+FileTools.getSizeFormated(imgProp.getCalculatedsize()));
         
-          long calculatedsize = imgProp.getCalculatedsize();
-          long name = imgProp.getSize();
-        
         double fact = (double)imgProp.getCalculatedsize() / (double)imgProp.getSize();
         
-        fact = 0.07;
+       
         shutdowncontroller.setProgress(1.0-fact);
       });
       shutdowncontroller.startTicker();
