@@ -71,6 +71,8 @@ public class MainWindowController implements Initializable {
   private Scene scene;
   private ShutdownController shutdowncontroller;
   private int maxsize;
+  private int thumbsize;
+  private String thumbStr;
   
 
   /**
@@ -96,6 +98,14 @@ public class MainWindowController implements Initializable {
 
   public void setOrigStr(String origStr) {
     this.origStr = origStr;
+  }
+  
+  public String getThumbStr() {
+    return thumbStr;
+  }
+  
+  public void setThumbStr(String thumbStr) {
+    this.thumbStr = thumbStr;
   }
   
 
@@ -132,11 +142,15 @@ public class MainWindowController implements Initializable {
     for(File file : filenames){
       /* Single Image Thread */
       ImageTask imageTask = new ImageTask(
-              file.getName(), baseStr, origStr, maxsize);
+              file.getName(), baseStr, origStr, maxsize, ImageTask.IS_IMAGE);
       tasklist.add(imageTask);
+      /* Thumbnails auch */
+      ImageTask thumbTask = new ImageTask(
+              file.getName(), baseStr, thumbStr, thumbsize, ImageTask.IS_THUMB);
+      tasklist.add(thumbTask);
     }
     
-    imgProp.setAnzahl(tasklist.size());
+    imgProp.setAnzahl(tasklist.size()*2);
     
     //Ausführen lassen
     allImagesTask = new Task() {
@@ -259,6 +273,12 @@ public class MainWindowController implements Initializable {
   public void setMaxSize(int maxsize) {
     this.maxsize = maxsize;
   }
+
+  public void setThumbSize(int thumbsize) {
+    this.thumbsize = thumbsize;
+  }
+
+  
 
 
 }

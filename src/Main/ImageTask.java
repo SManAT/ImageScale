@@ -18,18 +18,22 @@ import org.slf4j.LoggerFactory;
  */
 public class ImageTask extends Task<Integer> {
   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ImageTask.class);
+  public static final boolean IS_THUMB = true;
+  public static final boolean IS_IMAGE = false;
 
   private final String filename;
-  private final String origStr;
+  private final String targetStr;
   private final String baseStr;
   private SynchronizedImageProperties info;
   private final int maxsize;
+  private final boolean isthumb;
   
-  public ImageTask(String filename, String baseStr, String origStr, int maxsize) {
+  public ImageTask(String filename, String baseStr, String targetStr, int maxsize, boolean isthumb) {
     this.filename = filename;
     this.baseStr = baseStr;
-    this.origStr = origStr;
+    this.targetStr = targetStr;
     this.maxsize = maxsize;
+    this.isthumb = isthumb;
   }
   
   @Override
@@ -43,23 +47,46 @@ public class ImageTask extends Task<Integer> {
       Path root = Paths.get(orig).getParent();
 
       Path src = Paths.get(root.toString(), baseStr, workingFilename.getName());
-      Path target = Paths.get(root.toString(), baseStr, origStr, workingFilename.getName());
-      logger.info("Kopie von: "+src.toString());
+      Path target = Paths.get(root.toString(), baseStr, targetStr, workingFilename.getName());
+      String newname = "";
+      long origsize=0;
+      if(isthumb==ImageTask.IS_IMAGE){
+        logger.info("Kopie von: "+src.toString());
+        Files.copy(src, target);
+        origsize = FileTools.getSize(src);
+        info.addSize(origsize);
 
-      Files.copy(src, target);
+        // Load image
+        BufferedImage srcImage = ImageIO.read(src.toFile());
+        logger.info("Datei gelesen: "+src.toString());
+        // Scale image
+        BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
+        ImageIO.write(scaledImage, "JPG", src.toFile());
+        logger.info("Umgerechnet zu JPG");
+        //Websicheren Namen machen
+        newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), baseStr).toString(), workingFilename.getName());
+      }
       
-      long origsize = FileTools.getSize(src);
-      info.addSize(origsize);
-      
-      // Load image
-      BufferedImage srcImage = ImageIO.read(src.toFile());
-      logger.info("Datei gelesen: "+src.toString());
-      // Scale image
-      BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
-      ImageIO.write(scaledImage, "JPG", src.toFile());
-      logger.info("Umgerechnet zu JPG");
-      //Websicheren Namen machen
-      String newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), origStr).toString(), workingFilename.getName());
+      if(isthumb==ImageTask.IS_THUMB){
+        logger.info("Kopie von: "+src.toString());
+        Files.copy(src, target);
+        origsize = FileTools.getSize(src);
+        info.addSize(origsize);
+
+        // Load Image in Thumbdir
+        BufferedImage srcImage = ImageIO.read(target.toFile());
+        logger.info("Datei gelesen: "+target.toString());
+        // Scale image
+        BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
+        ImageIO.write(scaledImage, "JPG", target.toFile());
+        logger.info("Umgerechnet zu JPG");
+        //Websicheren Namen machen
+        newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), targetStr).toString(), workingFilename.getName());
+        //Umbenennen
+        Path oldfile = Paths.get(root.toString(), baseStr, targetStr, newname);
+        FileTools.RenameFile(oldfile, "thumb_"+newname);
+        newname = "thumb_"+newname;
+      }
       
       //neuer Name
       long newsize = FileTools.getSize(src);

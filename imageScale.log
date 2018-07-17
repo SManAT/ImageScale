@@ -416,3 +416,133 @@
 2018-01-26 16:59:44 INFO  ImageTask:60 - Umgerechnet zu JPG
 2018-01-26 16:59:44 INFO  ImageTask:67 - 78235 Byte -> 140145 Byte
 2018-01-26 16:59:44 INFO  MainWindowController:188 - Alle Tasks fertig
+2018-07-17 16:57:34 INFO  ImageTask:47 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 16:57:34 INFO  ImageTask:56 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 16:57:34 INFO  ImageTask:60 - Umgerechnet zu JPG
+2018-07-17 16:57:34 INFO  ImageTask:67 - 78235 Byte -> 140145 Byte
+2018-07-17 16:57:34 INFO  ImageTask:47 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 16:57:34 INFO  ImageTask:56 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 16:57:34 INFO  ImageTask:60 - Umgerechnet zu JPG
+2018-07-17 16:57:34 INFO  ImageTask:67 - 140145 Byte -> 8854 Byte
+2018-07-17 16:57:34 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:02:33 INFO  ImageTask:51 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:02:33 INFO  ImageTask:60 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:02:33 INFO  ImageTask:64 - Umgerechnet zu JPG
+2018-07-17 17:02:33 INFO  ImageTask:75 - 8854 Byte -> 82613 Byte
+2018-07-17 17:02:33 INFO  ImageTask:51 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:02:33 INFO  ImageTask:60 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:02:33 INFO  ImageTask:64 - Umgerechnet zu JPG
+2018-07-17 17:02:33 INFO  ImageTask:75 - 82613 Byte -> 8742 Byte
+2018-07-17 17:02:33 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:04:12 INFO  ImageTask:51 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:06:25 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:06:26 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:06:26 INFO  ImageTask:77 - 8742 Byte -> 81411 Byte
+2018-07-17 17:06:26 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:06:26 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:06:26 INFO  ImageTask:77 - 81411 Byte -> 8672 Byte
+2018-07-17 17:06:26 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:06:56 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:06:56 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:06:56 INFO  ImageTask:77 - 8672 Byte -> 80995 Byte
+2018-07-17 17:06:56 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:06:56 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:06:56 INFO  ImageTask:77 - 80995 Byte -> 8638 Byte
+2018-07-17 17:06:56 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:07:46 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:12:11 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:12:20 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:12:20 INFO  ImageTask:77 - 8638 Byte -> 80781 Byte
+2018-07-17 17:13:34 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:13:34 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:13:34 INFO  ImageTask:77 - 80781 Byte -> 80781 Byte
+2018-07-17 17:13:41 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:13:41 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:13:41 INFO  ImageTask:77 - 80781 Byte -> 8621 Byte
+2018-07-17 17:13:41 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:16:42 INFO  ImageTask:53 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:16:42 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:16:42 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:16:51 INFO  ImageTask:77 - 8621 Byte -> 80680 Byte
+2018-07-17 17:17:08 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:19:46 INFO  ImageTask:53 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:21:48 INFO  ImageTask:53 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:21:48 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:21:48 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:22:08 INFO  ImageTask:79 - 8606 Byte -> 80563 Byte
+2018-07-17 17:22:08 INFO  ImageTask:62 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:22:08 INFO  ImageTask:66 - Umgerechnet zu JPG
+2018-07-17 17:22:20 INFO  ImageTask:79 - 80563 Byte -> 8593 Byte
+2018-07-17 17:22:20 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:25:47 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:25:47 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:25:48 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:25:55 INFO  ImageTask:90 - 8593 Byte -> 80482 Byte
+2018-07-17 17:25:55 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:26:13 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:26:18 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:26:21 INFO  ImageTask:90 - 80482 Byte -> 8585 Byte
+2018-07-17 17:26:21 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:27:32 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:27:44 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:27:52 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:28:10 INFO  ImageTask:90 - 80482 Byte -> 80482 Byte
+2018-07-17 17:28:15 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:29:25 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:29:25 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:29:25 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:29:26 INFO  ImageTask:90 - 80482 Byte -> 80482 Byte
+2018-07-17 17:29:28 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:29:33 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:29:35 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:30:20 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:30:21 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:30:21 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:30:21 INFO  ImageTask:90 - 80482 Byte -> 80482 Byte
+2018-07-17 17:35:08 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:35:33 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:37:44 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:37:44 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:37:44 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:37:44 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:37:44 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:37:44 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\_thumbs\IMG_4333.JPG
+2018-07-17 17:37:44 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:37:44 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:37:44 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:38:18 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:38:18 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:38:18 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:38:18 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:38:18 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:38:18 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\_thumbs\IMG_4333.JPG
+2018-07-17 17:38:18 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:38:44 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:38:44 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:39:49 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:39:49 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:39:50 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:39:50 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:39:50 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:39:50 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\_thumbs\IMG_4333.JPG
+2018-07-17 17:39:50 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:39:50 INFO  ImageTask:93 - 80482 Byte -> 80482 Byte
+2018-07-17 17:39:50 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:47:21 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:47:21 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:47:22 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:47:22 INFO  ImageTask:94 - 80482 Byte -> 80482 Byte
+2018-07-17 17:47:22 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:47:22 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\_thumbs\IMG_4333.JPG
+2018-07-17 17:47:22 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:47:22 INFO  ImageTask:94 - 80482 Byte -> 80482 Byte
+2018-07-17 17:47:22 INFO  MainWindowController:202 - Alle Tasks fertig
+2018-07-17 17:48:00 INFO  ImageTask:54 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:48:00 INFO  ImageTask:61 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:48:00 INFO  ImageTask:65 - Umgerechnet zu JPG
+2018-07-17 17:48:00 INFO  ImageTask:94 - 80482 Byte -> 80482 Byte
+2018-07-17 17:48:00 INFO  ImageTask:71 - Kopie von: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\IMG_4333.JPG
+2018-07-17 17:48:00 INFO  ImageTask:78 - Datei gelesen: C:\Users\Stefan\OneDrive - BRG Frauengasse\Dokumente\MyWorkStuff\ImageScale\_Bilder\_thumbs\IMG_4333.JPG
+2018-07-17 17:48:00 INFO  ImageTask:82 - Umgerechnet zu JPG
+2018-07-17 17:48:00 INFO  ImageTask:94 - 80482 Byte -> 80482 Byte
+2018-07-17 17:48:00 INFO  MainWindowController:202 - Alle Tasks fertig

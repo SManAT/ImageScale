@@ -17,6 +17,8 @@ public class configHandler implements ContentHandler {
   public int maxsize;
   public String imagePath;
   public String backupPath;
+  public String thumbPath;
+  public int thumbsize;
 
   public configHandler() {
 
@@ -43,6 +45,9 @@ public class configHandler implements ContentHandler {
   public void endElement(String uri, String localName, String qName)
           throws SAXException {
     // Name setzen
+    if (localName.equals("thumb")) {
+      thumbsize = Integer.parseInt(currentValue.trim());
+    }
     if (localName.equals("max")) {
       maxsize = Integer.parseInt(currentValue.trim());
     }
@@ -51,6 +56,9 @@ public class configHandler implements ContentHandler {
     }
     if (localName.equals("backup-dir")) {
       backupPath = currentValue.trim();
+    }
+    if (localName.equals("thumb-dir")) {
+      thumbPath = currentValue.trim();
     }
   }
 

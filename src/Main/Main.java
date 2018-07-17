@@ -102,9 +102,11 @@ public class Main extends Application {
 
       XMLTool.LoadXMLFile(configFile, handle);
       
+      controller.setThumbSize(handle.thumbsize);
       controller.setMaxSize(handle.maxsize);
       controller.setBaseStr(handle.imagePath);
       controller.setOrigStr(handle.backupPath);
+      controller.setThumbStr(handle.thumbPath);
       
 
     } catch (Exception ex) {
@@ -122,9 +124,13 @@ public class Main extends Application {
     Path baseDir = Paths.get(workingDirectory.toString(), controller.getBaseStr());
     FileTools.createDirectory(baseDir);
     Path originalDir = Paths.get(baseDir.toString(), controller.getOrigStr());
+    Path thumbDir = Paths.get(baseDir.toString(), controller.getThumbStr());
     //Alte Inhalte löschen
     FileTools.deleteDir(originalDir.toFile());
     FileTools.createDirectory(originalDir);
+    
+    FileTools.deleteDir(thumbDir.toFile());
+    FileTools.createDirectory(thumbDir);
   }
   
    
