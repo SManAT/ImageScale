@@ -59,27 +59,41 @@ public class ImageTask extends Task<Integer> {
         // Load image
         BufferedImage srcImage = ImageIO.read(src.toFile());
         logger.info("Datei gelesen: "+src.toString());
-        // Scale image
-        BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
-        ImageIO.write(scaledImage, "JPG", src.toFile());
-        logger.info("Umgerechnet zu JPG");
+        
+        //Dimensionen zu groß?
+        int width = srcImage.getWidth();
+        int height = srcImage.getHeight();
+        if(width>maxsize || height>maxsize){        
+          // Scale image
+          BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
+          ImageIO.write(scaledImage, "JPG", src.toFile());
+          logger.info("Umgerechnet zu JPG");
+        }
         //Websicheren Namen machen
         newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), baseStr).toString(), workingFilename.getName());
+        
+        //neuer Name
+        long newsize = FileTools.getSize(src);
+        info.addCalculatedsize(newsize);
+        logger.info(origsize+" Byte -> "+newsize+" Byte");
       }
       
       if(isthumb==ImageTask.IS_THUMB){
         logger.info("Kopie von: "+src.toString());
         Files.copy(src, target);
-        origsize = FileTools.getSize(src);
-        info.addSize(origsize);
 
         // Load Image in Thumbdir
         BufferedImage srcImage = ImageIO.read(target.toFile());
         logger.info("Datei gelesen: "+target.toString());
-        // Scale image
-        BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
-        ImageIO.write(scaledImage, "JPG", target.toFile());
-        logger.info("Umgerechnet zu JPG");
+        //Dimensionen zu groß?
+        int width = srcImage.getWidth();
+        int height = srcImage.getHeight();
+        if(width>maxsize || height>maxsize){  
+          // Scale image
+          BufferedImage scaledImage = Scalr.resize(srcImage, maxsize);
+          ImageIO.write(scaledImage, "JPG", target.toFile());
+          logger.info("Umgerechnet zu JPG");
+        }
         //Websicheren Namen machen
         newname = FileTools.MakeSaveFileName(Paths.get(root.toString(), targetStr).toString(), workingFilename.getName());
         //Umbenennen
@@ -88,10 +102,7 @@ public class ImageTask extends Task<Integer> {
         newname = "thumb_"+newname;
       }
       
-      //neuer Name
-      long newsize = FileTools.getSize(src);
-      info.addCalculatedsize(newsize);
-      logger.info(origsize+" Byte -> "+newsize+" Byte");
+      
 
       updateMessage(newname);      
       updateProgress(1, 1);

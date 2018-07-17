@@ -35,7 +35,6 @@ public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("/Scenes/MainWindow.fxml"));
