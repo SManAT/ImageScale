@@ -34,13 +34,13 @@ public class ImageTask extends Task<Integer> {
     this.targetStr = targetStr;
     this.maxsize = maxsize;
     this.isthumb = isthumb;
+    updateProgress(1.0, 1.0);
   }
   
   @Override
   protected Integer call(){
     try {  
       //Infos
-      
       File workingFilename = new File(this.filename);
       //Original kopieren-----------------
       String orig = workingFilename.getAbsolutePath();
@@ -105,7 +105,7 @@ public class ImageTask extends Task<Integer> {
       
 
       updateMessage(newname);      
-      updateProgress(1, 1);
+      updateProgress(1.0, 1.0);  //update mit eins
     } catch (IOException ex) {
       ex.printStackTrace();
       return -1;

@@ -15,7 +15,6 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,11 +26,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Main.SynchronizedImageProperties;
 import SH.File.FileTools;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
 import javafx.beans.binding.DoubleBinding;
 import org.slf4j.LoggerFactory;
 
@@ -59,14 +55,13 @@ public class MainWindowController implements Initializable {
   private String origStr="";
   
   //Updating UI
-  public StringProperty TextProperty = new SimpleStringProperty("");
+  public StringProperty txtright_Property = new SimpleStringProperty("");
   //Progress für alle Tasks
   //https://stackoverflow.com/questions/12986916/javafx-updating-progress-for-the-multiple-tasks
-  DoubleBinding AllProgress = null;
+  DoubleBinding overallProgress = null;
     
-  private Thread timage;
   private SynchronizedImageProperties imgProp;
-  private Task allImagesTask;
+  private Task<Void> allImagesTask;
   private Thread worker;
   private Scene scene;
   private ShutdownController shutdowncontroller;
@@ -81,7 +76,6 @@ public class MainWindowController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     this.imgProp = new SynchronizedImageProperties(); 
-    txtright.textProperty().bind(TextProperty);
   }  
   
   public String getBaseStr() {
@@ -132,11 +126,8 @@ public class MainWindowController implements Initializable {
   public void setImgProp(SynchronizedImageProperties imgProp) {
     this.imgProp = imgProp;
   }
-
-  public void startConverting(){
-    int processors = Runtime.getRuntime().availableProcessors();
-    ExecutorService executor = Executors.newFixedThreadPool(processors);
-    
+  
+  public void startConverting(){  
     //Alle Tasks erstellen
     List<Task<Integer>> tasklist = new ArrayList<>();
     for(File file : filenames){
@@ -157,57 +148,54 @@ public class MainWindowController implements Initializable {
       @Override
       protected Integer call() throws Exception {
         for (Task<Integer> t : tasklist) {
-
           //jeder Task liefert einen Beitrag zum GesamtProgress
-          DoubleBinding task_progress = t.progressProperty().divide(tasklist.size());
-          if (AllProgress == null) {
-            AllProgress = task_progress;
+          //Der Wert wird im Constructor festgelegt = 1
+          DoubleBinding scaledProgress = t.progressProperty().divide((double)tasklist.size());
+          if (overallProgress == null) {
+            overallProgress = scaledProgress;
           } else {
-            AllProgress = AllProgress.add(task_progress);
+            overallProgress = overallProgress.add(scaledProgress);
           }
-          
+        
           //Arbeiten an der UI müssen im FX Thread passieren
           Platform.runLater(() -> {
-            progress.progressProperty().bind(AllProgress);
-            TextProperty.unbind();
-            TextProperty.bind(t.messageProperty());
+            progress.progressProperty().bind(overallProgress);
           });
           
-          ((ImageTask)t).setInfo(imgProp);
-          //Thread als Field definieren
-          timage = new Thread(t);
-          //timage.start();
-          Future<?> future = executor.submit(timage);
-          //blocking
-          future.get();
+          ImageTask theTask = (ImageTask)t;
+          theTask.setInfo(imgProp);
+          
+          theTask.setOnSucceeded((event) -> {
+            //Bindung zum Task aufheben
+            Platform.runLater(() -> {
+              txtright_Property.bind(theTask.messageProperty());
+              txtright.textProperty().unbind();
+            });
+          });
+          
+          Platform.runLater(() -> {
+            txtright.textProperty().bind(txtright_Property);
+          });
+          
+          Thread.sleep(40);
+          new Thread(theTask).start();
+          
+          // run task in single-thread executor (will queue if another task is running):
+          //exec.submit(theTask);
         }
-        
-        //finish all existing threads in the queue
-        executor.shutdown();
         return 1;
       }
     };
     
+    
     worker = new Thread(allImagesTask);
     worker.setName("Runnable-Convert all Images");
-    //worker.setDaemon(true);
-    ExecutorService es = Executors.newFixedThreadPool(1);
-    Future<?> worker_future = es.submit(worker);
-    es.shutdown();
-    
-    try {
-      //blocking
-      worker_future.get();
+    allImagesTask.setOnSucceeded((event) -> {
       //Alles Fertig
       logger.info("Alle Tasks fertig");
       this.changeScene("/Scenes/Shutdown.fxml");
-    } catch (InterruptedException | ExecutionException ex) {
-      Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    //worker.start();
-    
-    
-      
+    });
+    worker.start();
   }
   
   /**
@@ -226,7 +214,6 @@ public class MainWindowController implements Initializable {
       Scene scene = new Scene(parent);
       //Replace Progress Indicator      
       shutdowncontroller.ReplaceProgress(parent);
-      
       
       Platform.runLater(() -> {
         String formattedString = String.format("Bilder bearbeitet: %d", filenames.length);
