@@ -26,8 +26,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Main.SynchronizedImageProperties;
 import SH.File.FileTools;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import javafx.beans.binding.DoubleBinding;
 import org.slf4j.LoggerFactory;
 
@@ -68,6 +70,13 @@ public class MainWindowController implements Initializable {
   private int maxsize;
   private int thumbsize;
   private String thumbStr;
+  
+  //https://stackoverflow.com/questions/26611042/how-to-queue-tasks-in-javafx
+  private ExecutorService exec = Executors.newSingleThreadExecutor(r -> {
+    Thread t = new Thread(r);
+    t.setDaemon(true); // allows app to exit if tasks are running
+    return t;
+  });
   
 
   /**
@@ -177,12 +186,13 @@ public class MainWindowController implements Initializable {
             txtright.textProperty().bind(txtright_Property);
           });
           
-          Thread.sleep(40);
-          new Thread(theTask).start();
-          
+          //Thread.sleep(40);
+          //new Thread(theTask).start();
           // run task in single-thread executor (will queue if another task is running):
-          //exec.submit(theTask);
+          Future<?> future = exec.submit(theTask);
+          future.get();
         }
+        exec.shutdown();
         return 1;
       }
     };

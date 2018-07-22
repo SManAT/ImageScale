@@ -4,5 +4,5 @@
   <max>1600</max>
   <image-dir>_Bilder</image-dir>
   <backup-dir>_Originale</backup-dir>
-	<thumb-dir>_thumbs</thumb-dir>
+  <thumb-dir>_thumbs</thumb-dir>
 </config>
