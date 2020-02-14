@@ -1,0 +1,10 @@
+rootProject.name = 'ImageScale'
+
+include ':XML'
+project(':XML').projectDir = new File(settingsDir, '../SH/XML')
+
+include ':FileTools'
+project(':FileTools').projectDir = new File(settingsDir, '../SH/FileTools')
+
+include ':FXTools'
+project(':FXTools').projectDir = new File(settingsDir, '../SH/FXTools')

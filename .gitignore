@@ -44,5 +44,9 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
-
 # End of https://www.gitignore.io/api/java,gradle
+
+### MyStuff ###
+_Bilder/
+*.bat
+mac.txt

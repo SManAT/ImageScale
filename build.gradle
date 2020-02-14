@@ -1,0 +1,168 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+apply plugin: 'distribution'
+
+/* Variables ---------------------------------------------------------------- */
+sourceCompatibility = 1.8
+targetCompatibility = 1.13
+mainClassName = 'main.Starter'
+
+def myAppName='ImageScale'
+/* where to assemble the project */
+def outputDir='dist/'
+/* End Variables */
+
+repositories{
+  jcenter()
+  //online Repositories
+  mavenCentral()
+}
+
+/* Zip/Tar Distribution? */
+distZip.enabled = false
+distTar.enabled = false
+
+/* -------------------------------------------------------------------------- */
+/* JavaFX */
+//see https://github.com/openjfx/javafx-gradle-plugin
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'org.openjfx:javafx-plugin:0.0.8'
+    }
+}
+apply plugin: 'org.openjfx.javafxplugin'
+
+javafx {
+  version = '11.0.1'
+  modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+/* Badass Runtime build a JRE ----------------------------------------------- */
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.org.beryx:badass-runtime-plugin:1.8.0"
+  }
+}
+
+apply plugin: "org.beryx.runtime"
+
+runtime {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    /* use suggested Modules */
+    //modules = ['java.base', 'java.desktop', 'java.logging', 'java.xml']
+    //targetPlatform("$macJREName", macJDKPath)
+}
+
+task copyJRE(type: Copy) {
+  into "build/$outputDir"
+  /* JRE Runtime */
+  from("/build/jre") {
+    into 'jre'
+  }
+}
+tasks.runtime.finalizedBy(copyJRE)
+
+/* Launch4J ----------------------------------------------------------------- */
+/* Debugging ... gradle createExe -Pl4j-debug see build/tmp/                  */
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'edu.sc.seis.gradle:launch4j:2.4.6'
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'edu.sc.seis.launch4j'
+
+launch4j {
+  mainClassName = mainClassName
+  /* important because my Jar is not in dir lib/... */
+  jar = "${myAppName}.jar"
+  icon = "${projectDir}/src/main/resources/App.ico"
+  /* Use JRE INSIDE this Directoty */
+  bundledJrePath = "jre"
+  bundledJre64Bit = true
+  language = "GERMAN"
+  //headerType = 'console'
+  dontWrapJar = true
+}
+
+task copyExe(type: Copy) {
+  into "build/$outputDir"
+  /* Resourcen */
+  from('/build/launch4j') {
+    include "*.exe"
+  }
+}
+/* finally copy created EXE File to output Dir */
+createExe.finalizedBy(copyExe)
+
+/* -------------------------------------------------------------------------- */
+dependencies {
+   //von Maven Artifact ablesen
+   //compile "org.apache.commons:commons-lang3:3.9"
+   // https://mvnrepository.com/artifact/log4j/log4j
+   implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+   implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+   implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
+
+   testImplementation 'junit:junit:4.12'
+
+   //--------------------------------------------------------------------------
+   /* Locale Projects, see also settings.gradle */
+   compile project(':XML')
+   compile project(':FileTools')
+   compile project(':FXTools')
+}
+
+
+/* Create the JAR File with dependencies in subdir lib/ --------------------- */
+/* Write the correct Manifest ----------------------------------------------- */
+configurations.implementation.setCanBeResolved(true)
+jar {
+  from "$buildDir/libs/lib"
+  manifest {
+      attributes 'Main-Class': mainClassName,
+      'Class-Path': configurations.runtimeClasspath.collect { 'lib/'+it.getName() }.join(' ')
+  }
+}
+task copyToLib(type: Copy) {
+  into "$buildDir/libs/lib"
+  from configurations.compile, configurations.implementation
+}
+build.dependsOn(copyToLib)
+
+/* Copy it all together ----------------------------------------------------- */
+task copyStuff(type: Copy) {
+  into "build/$outputDir"
+  /* Resourcen */
+  from('/') {
+    include "*.*"
+    exclude 'launch4j.*', '*.gradle', '*.properties', '*.bat'
+  }
+
+  /* JAR File */
+  from("/build/libs/") {
+    /* full path = $buildDir/libs/jre */
+  }
+}
+build.finalizedBy(copyStuff)
+
+/* my own tasks ------------------------------------------------------------- */
+task all(dependsOn: ['clean', 'build', 'runtime']){
+  description = 'Clean, build and bundle for OS'
+}
+build.mustRunAfter clean
+tasks.runtime.finalizedBy(createExe)
