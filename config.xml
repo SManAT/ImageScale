@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>  
-  <thumb>600</thumb>
-  <max>1600</max>
-  <image-dir>_Bilder</image-dir>
-  <backup-dir>_Originale</backup-dir>
-  <thumb-dir>_thumbs</thumb-dir>
-</config>
