@@ -33,7 +33,7 @@ import javafx.beans.binding.DoubleBinding;
 import org.slf4j.LoggerFactory;
 
 /**
- * FXML Controller class
+ * FXML Controller class 
  *
  * @author Mag. Stefan Hagmann
  */

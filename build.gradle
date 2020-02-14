@@ -150,7 +150,7 @@ task copyStuff(type: Copy) {
   /* Resourcen */
   from('/') {
     include "*.*"
-    exclude 'launch4j.*', '*.gradle', '*.properties', '*.bat'
+    exclude 'launch4j.*', '*.gradle', '*.properties', '*.bat', '*.txt', '*.log'
   }
 
   /* JAR File */
