@@ -15,12 +15,8 @@ import controller.MainWindowController;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
-import javax.xml.stream.XMLStreamException;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Element;
 import xml.configHandler;
 
 /**
