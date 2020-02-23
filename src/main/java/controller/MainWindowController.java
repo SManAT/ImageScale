@@ -57,7 +57,7 @@ public class MainWindowController implements Initializable {
   
   //Updating UI
   public StringProperty txtright_Property = new SimpleStringProperty("");
-  //Progress fÃ¼r alle Tasks
+  //Progress für alle Tasks
   //https://stackoverflow.com/questions/12986916/javafx-updating-progress-for-the-multiple-tasks
   DoubleBinding overallProgress = null;
     
